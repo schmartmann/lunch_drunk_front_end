@@ -13,10 +13,26 @@ body {
 
   .app-container {
     height: 100%;
-    width: 100%;
+    width: auto;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+
+    .navigation {
+      width: 100%;
+
+      ul {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+
+        li {
+          margin: auto 5%;
+        }
+      }
+    }
   }
 }
