@@ -1,0 +1,22 @@
+$tangerine: #F18F01;
+$yellow: #EFCA08;
+$licorice: #1A090D;
+$dark-purple: #331832;
+$green: #31572C;
+$tomato: #FF6347;
+
+body {
+  background: $tomato;
+  color: $licorice;
+  font-size: 12px;
+  font-weight: 300;
+
+  .app-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
