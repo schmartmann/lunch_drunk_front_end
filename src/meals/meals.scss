@@ -1,0 +1,10 @@
+.meals {
+  .meal {
+    .meal-ingredients {
+
+      &.hidden {
+        visibility: hidden;
+      }
+    }
+  }
+}

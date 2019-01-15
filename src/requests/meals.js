@@ -1,10 +1,11 @@
 import { apiGetRequest } from './requests';
 
-export function getMeals() {
-  return apiGetRequest( '/meals' ).
+export function getMeals( timePeriodUuid, mealUuid = '' ) {
+  return apiGetRequest( `time_periods/${ timePeriodUuid }/meals/${ mealUuid }` ).
     then(
-      meals => {
-        console.log( meals );
-      }
+      meals => meals
+    ).
+    catch(
+      error => error
     );
 };

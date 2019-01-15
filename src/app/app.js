@@ -4,8 +4,8 @@ import './app.scss';
 
 import Navigation from './nav';
 import Landing from '../landing/landing';
-import TimePeriods from '../timePeriods/timePeriods';
-import Meals from '../meals/meals';
+import TimePeriodsContainer from '../timePeriods/timePeriodsContainer';
+import MealsContainer from '../meals/mealsContainer';
 import Ingredients from '../ingredients/ingredients';
 
 class App extends Component {
@@ -15,10 +15,9 @@ class App extends Component {
         <div className="app-container">
           <Navigation />
           <Route path="/" exact component={ Landing } />
-          <Route path="/time_periods" exact component={ TimePeriods } />
-          <Route path="/time_periods/:uuid" exact component={ TimePeriods } />
-          <Route path="/meals" exact component={ Meals } />
-          <Route path="/meals/:uuid" component={ Meals } />
+          <Route path="/time_periods" exact component={ TimePeriodsContainer } />
+          <Route path="/time_periods/:timePeriodUuid/meals" exact component={ MealsContainer } />
+          <Route path="/time_periods/:timePeriodUuid/meals/:uuid" exact component={ MealsContainer } />
           <Route path="/ingredients" exact component={ Ingredients } />
           <Route path="/ingredients/:uuid" exact component={ Ingredients } />
         </div>

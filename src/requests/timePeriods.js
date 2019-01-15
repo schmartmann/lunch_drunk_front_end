@@ -5,7 +5,7 @@ export function getTimePeriods( uuid ) {
 
   return apiGetRequest( `time_periods/${ uuid }` ).
     then(
-      meals => meals
+      timePeriods => timePeriods
     ).
     catch(
       error => error
