@@ -10,10 +10,7 @@ const Navigation = () => (
       <li>
         <Link to="/time_periods">Time Periods</Link>
       </li>
-{/*      <li>
-        <Link to="/meals">Meals</Link>
-      </li>
-*/}      <li>
+      <li>
         <Link to="/ingredients">Ingredients</Link>
       </li>
     </ul>
