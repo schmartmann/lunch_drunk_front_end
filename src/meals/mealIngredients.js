@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const MealIngredients = ( { expanded, ingredients } ) => {
   var view = ingredients.map( ingredient =>
     <li className="ingredient" key={ ingredient.uuid }>
-    { ingredient.name } { ingredient.quantity } { ingredient.unit }
+      { ingredient.name } { ingredient.quantity } { ingredient.unit }
     </li>
   );
 

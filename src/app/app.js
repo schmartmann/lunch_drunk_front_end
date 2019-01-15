@@ -6,7 +6,7 @@ import Navigation from './nav';
 import Landing from '../landing/landing';
 import TimePeriodsContainer from '../timePeriods/timePeriodsContainer';
 import MealsContainer from '../meals/mealsContainer';
-import Ingredients from '../ingredients/ingredients';
+import IngredientsContainer from '../ingredients/ingredientsContainer';
 
 class App extends Component {
   render() {
@@ -18,8 +18,8 @@ class App extends Component {
           <Route path="/time_periods" exact component={ TimePeriodsContainer } />
           <Route path="/time_periods/:timePeriodUuid/meals" exact component={ MealsContainer } />
           <Route path="/time_periods/:timePeriodUuid/meals/:uuid" exact component={ MealsContainer } />
-          <Route path="/ingredients" exact component={ Ingredients } />
-          <Route path="/ingredients/:uuid" exact component={ Ingredients } />
+          <Route path="/ingredients" exact component={ IngredientsContainer } />
+          <Route path="/ingredients/:uuid" exact component={ IngredientsContainer } />
         </div>
       </Router>
     );
