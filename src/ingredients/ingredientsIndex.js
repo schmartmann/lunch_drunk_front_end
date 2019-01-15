@@ -7,7 +7,8 @@ class IngredientsIndex extends Component {
   state = { ingredients: [] };
 
   componentWillMount() {
-    getIngredients( this.props.uuid ).
+    debugger
+    getIngredients( this.props.ingredientUuid ).
       then(
         ingredients => {
           //set a expanded attribute on each ingredient, only used in UI
