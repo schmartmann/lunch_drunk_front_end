@@ -7,7 +7,6 @@ class IngredientsIndex extends Component {
   state = { ingredients: [] };
 
   componentWillMount() {
-    debugger
     getIngredients( this.props.ingredientUuid ).
       then(
         ingredients => {
