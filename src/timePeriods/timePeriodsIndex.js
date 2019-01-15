@@ -26,6 +26,7 @@ class TimePeriodsIndex extends Component {
 
   render() {
     var view = <Loader/>
+    
     if ( this.state.timePeriods.length > 0 ) {
       view = this.state.timePeriods.map(
         timePeriod => (
