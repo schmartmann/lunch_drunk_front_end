@@ -3,9 +3,7 @@ import IngredientsIndex from './ingredientsIndex';
 import './ingredients.scss';
 
 const IngredientsContainer = ( { location, history, match } ) => {
-  const ingredientUuid = match.params.uuid;
-
-  return <IngredientsIndex ingredientUuid={ ingredientUuid }/>
+  return <IngredientsIndex ingredientUuid={ match.params.uuid }/>;
 };
 
 export default IngredientsContainer;

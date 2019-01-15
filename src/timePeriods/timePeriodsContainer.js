@@ -5,19 +5,17 @@ import TimePeriodShow from './timePeriodShow';
 const TimePeriodsContainer = ( { location, history, match } ) => {
   const timePeriodUuid = match.params.uuid;
 
-  var view;
+  var view  = <TimePeriodsIndex/>;
 
   if ( timePeriodUuid ) {
     view = <TimePeriodShow timePeriodUuid={ timePeriodUuid }/>
   }
-  else {
-    view = <TimePeriodsIndex/>
-  }
-    return(
-      <div className="time-periods">
-        { view }
-      </div>
-    );
+
+  return(
+    <div className="time-periods">
+      { view }
+    </div>
+  );
 };
 
 export default TimePeriodsContainer;

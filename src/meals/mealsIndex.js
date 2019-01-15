@@ -37,7 +37,7 @@ class MealsIndex extends Component {
   };
 
   render() {
-    var view = <Loader/>
+    var view = <Loader/>;
 
     if ( this.state.meals.length > 0 ) {
       view = this.state.meals.map(

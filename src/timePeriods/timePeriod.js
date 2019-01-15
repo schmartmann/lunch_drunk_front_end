@@ -7,7 +7,7 @@ class TimePeriod extends Component {
       <div className="time-period">
         { timePeriod.name } ( Meals: { timePeriod.meals.length } )
       </div>
-    )
+    );
   }
 };
 

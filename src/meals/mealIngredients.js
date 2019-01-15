@@ -14,7 +14,7 @@ const MealIngredients = ( { expanded, ingredients } ) => {
         { view }
       </ul>
     </ul>
-  )
+  );
 };
 
 export default MealIngredients;

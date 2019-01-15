@@ -37,7 +37,7 @@ class IngredientsIndex extends Component {
   };
 
   render() {
-    var view = <Loader/>
+    var view = <Loader/>;
 
     if ( this.state.ingredients.length > 0 ) {
       view = this.state.ingredients.map(
@@ -59,7 +59,7 @@ class IngredientsIndex extends Component {
       <div className="ingredients">
         {view}
       </div>
-    )
+    );
   }
 };
 

@@ -4,10 +4,9 @@ import './meals.scss';
 
 
 const MealsContainer = ( { location, history, match } ) => {
-  const timePeriodUuid = match.params.timePeriodUuid;
-  const mealUuid = match.params.uuid;
+  const { timePeriodUuid, uuid } = match.params;
 
-  return <MealsIndex timePeriodUuid={ timePeriodUuid }/>
+  return <MealsIndex mealUuid={ uuid } timePeriodUuid={ timePeriodUuid }/>;
 };
 
 export default MealsContainer;

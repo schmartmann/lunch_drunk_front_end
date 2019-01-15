@@ -36,10 +36,10 @@ class TimePeriodShow extends Component {
         <div className="time-period">
           <div>{ this.state.timePeriod.name } -- show view</div>
         </div>
-      )
+      );
     }
 
-    return view
+    return view;
   };
 };
 
