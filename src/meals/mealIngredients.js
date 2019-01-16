@@ -11,20 +11,26 @@ function formatUnits( unit ) {
 };
 
 const MealIngredients = ( { expanded, ingredients } ) => {
-  var view = ingredients.map( ingredient =>
-    <li className="ingredient" key={ ingredient.uuid }>
-      { ingredient.quantity } { formatUnits( ingredient.unit ) } { ingredient.name }
-    </li>
-  );
+  var ingredientsArr = <li>No ingredients current associated</li>;
 
-  return(
+  if ( ingredients && ingredients.length > 0 ) {
+    ingredientsArr = ingredients.map( ingredient =>
+      <li className="ingredient" key={ ingredient.uuid }>
+        { ingredient.quantity } { formatUnits( ingredient.unit ) } { ingredient.name }
+      </li>
+    );
+  }
+
+  var container = (
     <ul className={ `meal-ingredients ${ expanded ? 'visible' : 'hidden' }` }>
       <li>ingredients</li>
       <ul>
-        { view }
+        { ingredientsArr }
       </ul>
     </ul>
   );
+
+  return container;
 };
 
 export default MealIngredients;

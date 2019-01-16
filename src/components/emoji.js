@@ -20,7 +20,9 @@ const emojiMap = {
   'milk': '🍼',
   'cheese': '🧀',
   'egg': '🥚',
-  'bacon': '🥓'
+  'bacon': '🥓',
+  'dice': '🎲',
+  'fingers-crossed': '🤞'
 };
 
 const Emoji = ( { label, symbol  } ) => {

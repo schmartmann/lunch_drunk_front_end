@@ -2,46 +2,125 @@ import React, { Component } from 'react';
 import Loader from '../landing/loader';
 import Emoji from '../components/emoji';
 
+import MealRandomizer from './mealRandomizer';
 import MealIngredients from './mealIngredients';
 
 import { getTimePeriods } from '../requests/timePeriods';
-import { getMeals } from '../requests/meals';
+import { getMeals, shuffleMeals } from '../requests/meals';
 
+const queryTimePeriod = ( timePeriodUuid ) => {
+  return new Promise(
+    ( resolve, reject ) => {
+      getTimePeriods( timePeriodUuid ).
+        then(
+          timePeriods => {
+            var timePeriod = timePeriods.find(
+              timePeriod => timePeriod.uuid === timePeriodUuid
+            );
+
+            resolve( timePeriod );
+          }
+        ).
+        catch(
+          error => {
+            reject( error );
+          }
+        );
+    }
+  );
+}
+
+const queryMeals = ( timePeriod, mealUuid ) => {
+  return new Promise(
+    ( resolve, reject ) => {
+      getMeals( timePeriod.uuid ).
+        then(
+          meals => {
+           //set a expanded attribute on each meal, only used in UI
+           meals.forEach( meal => meal.expanded = false );
+
+           resolve( [ timePeriod, meals ] );
+         }
+       ).
+       catch(
+         error => {
+           reject( error )
+         }
+       );
+    }
+  );
+};
+
+const queryMealsShuffle = ( timePeriod, mealUuid ) => {
+  return new Promise(
+    ( resolve, reject ) => {
+      shuffleMeals( timePeriod.uuid, mealUuid ).
+        then(
+          meals => {
+           //set a expanded attribute on each meal, only used in UI
+           meals.forEach( meal => meal.expanded = false );
+
+           resolve( [ timePeriod, meals ] );
+         }
+       ).
+       catch(
+         error => {
+           reject( error )
+         }
+       );
+    }
+  );
+};
 
 class MealsIndex extends Component {
-  state = { timePeriod: null, meals: [] };
+  state = { timePeriod: null, meals: [], previousMealUuid: null };
 
   componentWillMount() {
-    const { timePeriodUuid } = this.props;
+    const { timePeriodUuid, shuffle } = this.props;
 
-    getTimePeriods( timePeriodUuid ).
+    queryTimePeriod( timePeriodUuid ).
       then(
-        timePeriods => {
-          var timePeriod = timePeriods.find(
-             timePeriod => timePeriod.uuid === timePeriodUuid
-           );
-
-           this.setState(
-             {
-               timePeriod: timePeriod
-             }
-           );
-
-           getMeals( timePeriod.uuid ).
-             then(
-               meals => {
-                 //set a expanded attribute on each meal, only used in UI
-                 meals.forEach( meal => meal.expanded = false );
-
-                 this.setState(
-                   {
-                     meals: meals
-                   }
-                 );
-               }
-             );
+        timePeriod => {
+          return shuffle ? queryMealsShuffle( timePeriod ) : queryMeals( timePeriod );
         }
-      );
+      ).
+      then(
+        results => {
+          var newState = {
+            timePeriod: results[ 0 ],
+            meals: results[ 1 ]
+          };
+
+          if ( shuffle ) {
+            newState.previousMealUuid = newState.meals[ 0 ].uuid
+          }
+
+          this.setState( newState );
+        }
+      ).
+      catch(
+        error => console.log( error )
+      )
+  };
+
+  componentWillReceiveProps( nextProps ) {
+    if ( nextProps.shuffle ) {
+      queryMealsShuffle( this.state.timePeriod, this.state.previousMealUuid ).
+        then(
+          results => {
+            var newState = {
+              timePeriod: results[ 0 ],
+              meals: results[ 1 ],
+              previousMealUuid: results[ 1 ][ 0 ].uuid
+            };
+
+            this.setState( newState );
+          }
+        ).
+        catch(
+          error => console.log( error )
+        );
+    }
   };
 
   toggleMeal( uuid ) {
@@ -92,6 +171,7 @@ class MealsIndex extends Component {
     return (
       <div className="meals">
         { header }
+        <MealRandomizer timePeriodUuid={ this.props.timePeriodUuid } previousMealUuid={ this.state.previousMealUuid }/>
         { view }
       </div>
     )
