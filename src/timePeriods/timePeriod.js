@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tooltip from '../app/tooltip';
+import Tooltip from '../components/tooltip';
 
 const TimePeriod = ( { timePeriod } ) => {
   const text = `Meals: ${ timePeriod.meals.length }`;

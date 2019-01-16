@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './app.scss';
 
-import Navigation from './nav';
+import Navigation from '../components/nav';
+import Footer from '../components/footer';
+
 import Landing from '../landing/landing';
 import TimePeriodsContainer from '../timePeriods/timePeriodsContainer';
 import MealsContainer from '../meals/mealsContainer';
 import IngredientsContainer from '../ingredients/ingredientsContainer';
-import Footer from './footer';
 
 class App extends Component {
   render() {

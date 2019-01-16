@@ -1,4 +1,4 @@
-import './tooltip.scss';
+import './stylesheets/tooltip.scss';
 
 import React, { Component } from 'react';
 
