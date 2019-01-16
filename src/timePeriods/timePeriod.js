@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import Tooltip from '../app/tooltip';
 
-class TimePeriod extends Component {
-  render() {
-    const { timePeriod } = this.props;
-    return(
-      <div className="time-period">
-        { timePeriod.name } ( Meals: { timePeriod.meals.length } )
-      </div>
-    );
-  }
+const TimePeriod = ( { timePeriod } ) => {
+  const text = `Meals: ${ timePeriod.meals.length }`;
+
+  return(
+    <div>
+      <span className="name">
+        { timePeriod.name }
+      </span>
+      <Tooltip hover={ timePeriod.hover } text={ text } />
+    </div>
+  );
 };
+
 
 export default TimePeriod;

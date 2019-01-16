@@ -48,7 +48,7 @@ class IngredientsIndex extends Component {
             onClick={
               this.toggleIngredient.bind( this, ingredient.uuid )
             } >
-            <span>{ ingredient.name }</span>
+            <span className="name">{ ingredient.name }</span>
             <IngredientMeals meals={ ingredient.meals } expanded={ ingredient.expanded }/>
           </div>
         )
@@ -57,6 +57,7 @@ class IngredientsIndex extends Component {
 
     return (
       <div className="ingredients">
+        <span className="header">Ingredients</span>
         {view}
       </div>
     );

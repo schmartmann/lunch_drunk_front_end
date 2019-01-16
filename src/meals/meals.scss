@@ -1,10 +1,63 @@
+@import '../app/colors.scss';
+
 .meals {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+
+  .header {
+    text-transform: capitalize;
+    font-size: 24px;
+    margin-bottom: 24px;
+    font-weight: bold;
+  }
+
   .meal {
+    border: 1px solid $dark-purple;
+    color: $licorice;
+    background: $tomato;
+    border-radius: 4px;
+    padding: 8px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    height: 100%;
+    width: 50%;
+
+    .name {
+      text-transform: capitalize;
+      font-size: 24px;
+    }
+
     .meal-ingredients {
+      list-style: none;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: $eggshell;
+
+      ul {
+        text-transform: none;
+        position: relative;
+
+        .ingredient {
+          position: relative;
+          right: 24px;
+        }
+      }
 
       &.hidden {
-        visibility: hidden;
+        display: none;
       }
+    }
+
+    &:hover {
+      font-weight: 400;
+      cursor: pointer;
     }
   }
 }

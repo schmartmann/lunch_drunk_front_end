@@ -1,15 +1,11 @@
-$tangerine: #F18F01;
-$yellow: #EFCA08;
-$licorice: #1A090D;
-$dark-purple: #331832;
-$green: #31572C;
-$tomato: #FF6347;
+@import './colors.scss';
 
 body {
   background: $tomato;
   color: $licorice;
   font-size: 12px;
   font-weight: 300;
+  z-index: 1;
 
   .app-container {
     height: 100%;
@@ -35,6 +31,33 @@ body {
         }
       }
     }
+  }
+
+  .container {
+    background: $eggshell;
+    width: 75%;
+    min-height: 250px;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px 1px $licorice;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    padding: 8px;
+    color: $eggshell;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    cursor: pointer;
   }
 }
 

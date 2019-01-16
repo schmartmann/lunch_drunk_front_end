@@ -1,0 +1,47 @@
+@import '../app/colors.scss';
+
+.time-periods {
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+
+  .header {
+    text-transform: capitalize;
+    font-size: 24px;
+    margin-bottom: 24px;
+    font-weight: bold;
+  }
+
+  .time-period {
+    border: 1px solid $yellow;
+    color: $tomato;
+    background: $licorice;
+    border-radius: 4px;
+    padding: 4px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: baseline;
+    align-items: flex-start;
+    position: relative;
+    height: 40px;
+    width: 50%;
+
+    div {
+      .name {
+        text-transform: capitalize;
+        font-size: 24px;
+      }
+
+      .tooltip {
+        position: relative;
+        left: 108px;
+        bottom: 25px;
+      }
+    }
+  }
+}
