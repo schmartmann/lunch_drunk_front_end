@@ -38,11 +38,9 @@ class IngredientsIndex extends Component {
     );
   };
 
-  render() {
-    var view = <Loader/>;
-
-    if ( this.state.ingredients.length > 0 ) {
-      view = this.state.ingredients.map(
+  renderIngredients( ingredients ) {
+    if ( ingredients && ingredients.length > 0 ) {
+      return ingredients.map(
         ingredient => (
           <div
             className="ingredient"
@@ -58,12 +56,19 @@ class IngredientsIndex extends Component {
           </div>
         )
       );
-    }
+    } else if ( ingredients && ingredients.length === 0 ) {
 
+    } else {
+      return( <Loader/> );
+    }
+  };
+
+  render() {
+    const { ingredients } = this.state;
     return (
       <div className="ingredients">
         <span className="header">Ingredients</span>
-        {view}
+        { this.renderIngredients( ingredients ) }
       </div>
     );
   }

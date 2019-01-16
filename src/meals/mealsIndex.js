@@ -137,13 +137,9 @@ class MealsIndex extends Component {
     );
   };
 
-  render() {
-    const { timePeriod } = this.state;
-    var view = <Loader/>;
-    var header;
-
+  renderSectionHeader( timePeriod ) {
     if ( timePeriod ) {
-      header = (
+      return(
         <span className="header">
           <Emoji symbol={ timePeriod.emoji } label={ timePeriod.emoji } />
           { timePeriod.name }
@@ -151,11 +147,13 @@ class MealsIndex extends Component {
       )
     }
     else {
-      header = <div/>
+      return null;
     }
+  };
 
-    if ( this.state.meals.length > 0 ) {
-      view = this.state.meals.map(
+  renderMeals( meals ) {
+    if ( meals && meals.length > 0 ) {
+      return meals.map(
         meal => (
           <div className="meal" key={ meal.uuid } onClick={ this.toggleMeal.bind( this, meal.uuid ) }>
             <span className="name">
@@ -166,13 +164,33 @@ class MealsIndex extends Component {
           </div>
         )
       );
+    } else if ( meals && meals.length === 0 ) {
+      return null;
+    } else {
+      return( <Loader/> );
     }
+  };
 
+  renderRandomizer( meals ) {
+    if ( meals && meals.length > 0 ) {
+      return(
+        <MealRandomizer
+          timePeriodUuid={ this.props.timePeriodUuid }
+          previousMealUuid={ this.state.previousMealUuid }
+        />
+      );
+    } else {
+      return null;
+    }
+  }
+
+  render() {
+    const { timePeriod, meals } = this.state;
     return (
       <div className="meals">
-        { header }
-        <MealRandomizer timePeriodUuid={ this.props.timePeriodUuid } previousMealUuid={ this.state.previousMealUuid }/>
-        { view }
+        { this.renderSectionHeader( timePeriod ) }
+        { this.renderRandomizer( meals ) }
+        { this.renderMeals( meals ) }
       </div>
     )
   }
