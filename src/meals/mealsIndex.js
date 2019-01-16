@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Loader from '../landing/loader';
+import Emoji from '../components/emoji';
+
 import MealIngredients from './mealIngredients';
+
 import { getTimePeriods } from '../requests/timePeriods';
 import { getMeals } from '../requests/meals';
+
 
 class MealsIndex extends Component {
   state = { timePeriod: null, meals: [] };
@@ -40,6 +44,21 @@ class MealsIndex extends Component {
       );
   };
 
+  buildEmojis() {
+    var mealEmojis = [
+      'fork-and-knife',
+      'birthday-cake',
+      'poultry-leg',
+      'pot-of-food',
+      'paella',
+      'burrito',
+      'hotdog',
+      'pizza'
+    ];
+
+    return mealEmojis.map( emoji => <Emoji symbol={ emoji } label={ emoji }/> )
+  };
+
   toggleMeal( uuid ) {
     var meals = this.state.meals;
     var meal = meals.find( meal => meal.uuid === uuid );
@@ -60,7 +79,14 @@ class MealsIndex extends Component {
     var header;
 
     if ( timePeriod ) {
-      header = <span className="header">{ timePeriod.name }</span>
+      header = (
+        <span className="header">
+          <div className="emojis">
+            { this.buildEmojis() }
+          </div>
+          { timePeriod.name }
+        </span>
+      )
     }
     else {
       header = <div/>
