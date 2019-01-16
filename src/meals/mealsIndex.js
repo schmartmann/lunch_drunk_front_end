@@ -1,23 +1,45 @@
 import React, { Component } from 'react';
 import Loader from '../landing/loader';
+import Emoji from '../components/emoji';
+
 import MealIngredients from './mealIngredients';
+
+import { getTimePeriods } from '../requests/timePeriods';
 import { getMeals } from '../requests/meals';
 
+
 class MealsIndex extends Component {
-  state = { meals: [] };
+  state = { timePeriod: null, meals: [] };
 
   componentWillMount() {
-    getMeals( this.props.timePeriodUuid ).
-      then(
-        meals => {
-          //set a expanded attribute on each meal, only used in UI
-          meals.forEach( meal => meal.expanded = false );
+    const { timePeriodUuid } = this.props;
 
-          this.setState(
-            {
-              meals: meals
-            }
-          );
+    getTimePeriods( timePeriodUuid ).
+      then(
+        timePeriods => {
+          var timePeriod = timePeriods.find(
+             timePeriod => timePeriod.uuid === timePeriodUuid
+           );
+
+           this.setState(
+             {
+               timePeriod: timePeriod
+             }
+           );
+
+           getMeals( timePeriod.uuid ).
+             then(
+               meals => {
+                 //set a expanded attribute on each meal, only used in UI
+                 meals.forEach( meal => meal.expanded = false );
+
+                 this.setState(
+                   {
+                     meals: meals
+                   }
+                 );
+               }
+             );
         }
       );
   };
@@ -37,13 +59,30 @@ class MealsIndex extends Component {
   };
 
   render() {
+    const { timePeriod } = this.state;
     var view = <Loader/>;
+    var header;
+
+    if ( timePeriod ) {
+      header = (
+        <span className="header">
+          <Emoji symbol={ timePeriod.emoji } label={ timePeriod.emoji } />
+          { timePeriod.name }
+        </span>
+      )
+    }
+    else {
+      header = <div/>
+    }
 
     if ( this.state.meals.length > 0 ) {
       view = this.state.meals.map(
         meal => (
           <div className="meal" key={ meal.uuid } onClick={ this.toggleMeal.bind( this, meal.uuid ) }>
-            <span>{ meal.name }</span>
+            <span className="name">
+              <Emoji symbol={ meal.emoji } label={ meal.emoji } />
+              { meal.name }
+            </span>
             <MealIngredients ingredients={ meal.ingredients } expanded={ meal.expanded }/>
           </div>
         )
@@ -52,7 +91,8 @@ class MealsIndex extends Component {
 
     return (
       <div className="meals">
-        {view}
+        { header }
+        { view }
       </div>
     )
   }

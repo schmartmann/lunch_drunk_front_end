@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './app.scss';
 
-import Navigation from './nav';
+import Navigation from '../components/nav';
+import Footer from '../components/footer';
+
 import Landing from '../landing/landing';
 import TimePeriodsContainer from '../timePeriods/timePeriodsContainer';
 import MealsContainer from '../meals/mealsContainer';
@@ -20,6 +22,7 @@ class App extends Component {
           <Route path="/time_periods/:timePeriodUuid/meals/:uuid" exact component={ MealsContainer } />
           <Route path="/ingredients" exact component={ IngredientsContainer } />
           <Route path="/ingredients/:uuid" exact component={ IngredientsContainer } />
+          <Footer/>
         </div>
       </Router>
     );

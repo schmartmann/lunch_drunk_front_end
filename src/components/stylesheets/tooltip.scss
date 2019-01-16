@@ -1,0 +1,21 @@
+@import './colors.scss';
+
+.tooltip {
+  height: auto;
+  width: 60px;
+  padding: 4px;
+  background: $tangerine;
+  color: $eggshell;
+  border: 1px solid $dark-purple;
+  border-radius: 4px;
+  font-weight: normal;
+  text-align: center;
+
+  &.visible {
+    visibility: visible;
+  }
+  &.hidden {
+    visibility: hidden;
+    height: 0px;
+  }
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TimePeriodsIndex from './timePeriodsIndex';
 import TimePeriodShow from './timePeriodShow';
+import './timePeriods.scss';
+
 
 const TimePeriodsContainer = ( { location, history, match } ) => {
   const timePeriodUuid = match.params.uuid;
@@ -12,8 +14,11 @@ const TimePeriodsContainer = ( { location, history, match } ) => {
   }
 
   return(
-    <div className="time-periods">
-      { view }
+    <div className="container">
+      <div className="time-periods">
+        <span className="header">Time Periods</span>
+        { view }
+      </div>
     </div>
   );
 };
