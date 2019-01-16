@@ -20,6 +20,8 @@ class App extends Component {
           <Route path="/time_periods" exact component={ TimePeriodsContainer } />
           <Route path="/time_periods/:timePeriodUuid/meals" exact component={ MealsContainer } />
           <Route path="/time_periods/:timePeriodUuid/meals/:uuid" exact component={ MealsContainer } />
+          <Route path="/time_periods/:timePeriodUuid/meals_shuffle" exact component={ MealsContainer } />
+          <Route path="/time_periods/:timePeriodUuid/meals_shuffle/:uuid" exact component={ MealsContainer } />
           <Route path="/ingredients" exact component={ IngredientsContainer } />
           <Route path="/ingredients/:uuid" exact component={ IngredientsContainer } />
           <Footer/>

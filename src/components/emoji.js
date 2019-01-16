@@ -20,20 +20,26 @@ const emojiMap = {
   'milk': '🍼',
   'cheese': '🧀',
   'egg': '🥚',
-  'bacon': '🥓'
+  'bacon': '🥓',
+  'dice': '🎲',
+  'fingers-crossed': '🤞'
 };
 
 const Emoji = ( { label, symbol  } ) => {
-  return(
-    <span
-        className="emoji"
-        role="img"
-        aria-label={ label ? label : '' }
-        aria-hidden={ label ? "false" : "true" }
-    >
-      { emojiMap[ symbol ] }
-    </span>
-  );
+  if ( symbol && label ) {
+    return(
+      <span
+          className="emoji"
+          role="img"
+          aria-label={ label ? label : '' }
+          aria-hidden={ label ? "false" : "true" }
+      >
+        { emojiMap[ symbol ] }
+      </span>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Emoji;
