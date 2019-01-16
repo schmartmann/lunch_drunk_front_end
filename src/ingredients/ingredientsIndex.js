@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Loader from '../landing/loader';
+import Emoji from '../components/emoji';
+
 import IngredientMeals from './ingredientMeals';
 import { getIngredients } from '../requests/ingredients';
 
@@ -48,7 +50,10 @@ class IngredientsIndex extends Component {
             onClick={
               this.toggleIngredient.bind( this, ingredient.uuid )
             } >
-            <span className="name">{ ingredient.name }</span>
+            <span className="name">
+              <Emoji symbol={ ingredient.emoji } label={ ingredient.emoji }/>
+              { ingredient.name }
+            </span>
             <IngredientMeals meals={ ingredient.meals } expanded={ ingredient.expanded }/>
           </div>
         )

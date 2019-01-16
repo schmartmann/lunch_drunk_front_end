@@ -8,19 +8,10 @@
   padding: 32px;
 
   .header {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
     text-transform: capitalize;
     font-size: 24px;
     margin-bottom: 24px;
     font-weight: bold;
-    width: 100%;
-
-    span {
-      // align-self: center;
-    }
   }
 
   .meal {
@@ -37,10 +28,16 @@
     position: relative;
     height: 100%;
     width: 50%;
+    margin: 4px auto;
 
     .name {
       text-transform: capitalize;
       font-size: 24px;
+
+      .emoji {
+        font-size: 18px;
+        margin-right: 8px;
+      }
     }
 
     .meal-ingredients {

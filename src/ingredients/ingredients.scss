@@ -32,6 +32,11 @@
     .name {
       text-transform: capitalize;
       font-size: 24px;
+
+      .emoji {
+        font-size: 18px;
+        margin-right: 4px;
+      }
     }
 
     .ingredient-meals {

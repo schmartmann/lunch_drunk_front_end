@@ -25,16 +25,19 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    align-items: baseline;
-    align-items: flex-start;
     position: relative;
     height: 40px;
-    width: 50%;
+    width: 30%;
 
     div {
       .name {
         text-transform: capitalize;
         font-size: 24px;
+
+        .emoji {
+          font-size: 18px;
+          margin-right: 4px;
+        }
       }
 
       .tooltip {

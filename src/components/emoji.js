@@ -1,6 +1,6 @@
 import React from 'react';
 
-const emojiTranslator = {
+const emojiMap = {
   'home': '🏠',
   'sunrise': '🌄',
   'afternoon': '🌞',
@@ -14,9 +14,14 @@ const emojiTranslator = {
   'paella': '🥘',
   'burrito': '🌯',
   'hotdog': '🌭',
-  'pizza': '🍕'
+  'pizza': '🍕',
+  'croissant': '🥐',
+  'spoon': '🥄',
+  'milk': '🍼',
+  'cheese': '🧀',
+  'egg': '🥚',
+  'bacon': '🥓'
 };
-
 
 const Emoji = ( { label, symbol  } ) => {
   return(
@@ -26,7 +31,7 @@ const Emoji = ( { label, symbol  } ) => {
         aria-label={ label ? label : '' }
         aria-hidden={ label ? "false" : "true" }
     >
-      { emojiTranslator[ symbol ] }
+      { emojiMap[ symbol ] }
     </span>
   );
 };

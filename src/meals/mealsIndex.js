@@ -44,21 +44,6 @@ class MealsIndex extends Component {
       );
   };
 
-  buildEmojis() {
-    var mealEmojis = [
-      'fork-and-knife',
-      'birthday-cake',
-      'poultry-leg',
-      'pot-of-food',
-      'paella',
-      'burrito',
-      'hotdog',
-      'pizza'
-    ];
-
-    return mealEmojis.map( emoji => <Emoji symbol={ emoji } label={ emoji }/> )
-  };
-
   toggleMeal( uuid ) {
     var meals = this.state.meals;
     var meal = meals.find( meal => meal.uuid === uuid );
@@ -81,9 +66,7 @@ class MealsIndex extends Component {
     if ( timePeriod ) {
       header = (
         <span className="header">
-          <div className="emojis">
-            { this.buildEmojis() }
-          </div>
+          <Emoji symbol={ timePeriod.emoji } label={ timePeriod.emoji } />
           { timePeriod.name }
         </span>
       )
@@ -96,7 +79,10 @@ class MealsIndex extends Component {
       view = this.state.meals.map(
         meal => (
           <div className="meal" key={ meal.uuid } onClick={ this.toggleMeal.bind( this, meal.uuid ) }>
-            <span className="name">{ meal.name }</span>
+            <span className="name">
+              <Emoji symbol={ meal.emoji } label={ meal.emoji } />
+              { meal.name }
+            </span>
             <MealIngredients ingredients={ meal.ingredients } expanded={ meal.expanded }/>
           </div>
         )
